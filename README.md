@@ -39,14 +39,12 @@ This project is intended as a practical SAR-based maritime monitoring pipeline t
 
 ```text
 Sentinel1_SAR_Ship_Detection_Classification/
-├── notebooks/
-│   ├── 01_LS_SSDD_Data_Preparation.ipynb
-│   ├── 02_YOLOv8_Training_LS_SSDD.ipynb
-│   ├── 03_YOLOv8_Inference_Sentinel1.ipynb
-│   ├── 04_OpenSARShip2_Data_Preparation.ipynb
-│   ├── 05_ResNet_Training_OpenSARShip2.ipynb
-│   ├── 06_Ship_Classification_Inference.ipynb
-│   └── 07_Georeferenced_Visualization.ipynb
+├── scripts/
+│   ├── Preparation_OpenSARShip2.ipynb
+│   ├── Train_YOLO_LS_SSDD.ipynb
+│   ├── Train_Resnet_ship_class.ipynb
+│   ├── Visualization_YOLO.ipynb
+│   ├── Visualization_YOLO_Resnet.ipynb
 │
 ├── figures/
 │   ├── Model_Training_Workflow.png
@@ -54,14 +52,16 @@ Sentinel1_SAR_Ship_Detection_Classification/
 │   ├── Ship_Detection_Classification_Result.png
 │   ├── Busan_Ship_Detection_Result.png
 │   ├── Gwangyang_Ship_Detection_Result.png
-│   └── Ulsan_Ship_Detection_Result.png
+│   ├── Ulsan_Ship_Detection_Result.png
+│   ├── Busan_Ship_Classification_Result.png
+│   ├── Gwangyang_Ship_Classification_Result.png
+│   └── Ulsan_Ship_Classification_Result.png
 │
 ├── MATLAB/
 │   └── Mapping_Sentinel1.m
 │
 ├── trained_models/
 │   ├── ls_ssdd_yolov8s_20epoch_best.pt
-│   ├── ls_ssdd_yolov8s_20epoch_last.pt
 │   └── opensarship2_resnet18_3class_ship_classifier.pt
 │
 ├── requirements.txt
