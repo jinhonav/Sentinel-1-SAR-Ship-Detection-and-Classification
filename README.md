@@ -169,7 +169,7 @@ It performs the following steps:
 - Checks the class distribution.
 - Prepares the image paths and labels for ResNet-based ship classification.
 
-This notebook is mainly used for dataset inspection and preprocessing before classifier training.
+This script is mainly used for dataset inspection and preprocessing before classifier training.
 
 ---
 
@@ -195,7 +195,7 @@ It performs the following steps:
 - Runs test prediction examples.
 - Saves the trained `best.pt` and `last.pt` model weights to Google Drive.
 
-This notebook produces the final YOLOv8 ship detector used for Sentinel-1 SAR ship detection.
+This script produces the final YOLOv8 ship detector used for Sentinel-1 SAR ship detection.
 
 ---
 
@@ -218,7 +218,7 @@ It performs the following steps:
 - Reports classification metrics such as precision, recall, F1-score, and accuracy.
 - Saves the trained ResNet model checkpoint.
 
-This notebook produces the ship type classifier used after YOLO-based ship detection.
+This script produces the ship type classifier used after YOLO-based ship detection.
 
 ---
 
@@ -237,7 +237,7 @@ It performs the following steps:
 - Overlays detected ship boxes on Sentinel-1 SAR images.
 - Generates georeferenced ship detection maps.
 
-This notebook is used to produce YOLO-only ship detection figures.
+This script is used to produce YOLO-only ship detection figures.
 
 ---
 
@@ -260,7 +260,9 @@ It performs the following steps:
   - `Other Type`
 - Generates final georeferenced ship detection and classification maps.
 
-This notebook produces the final ship classification visualization results for Busan, Gwangyang, and Ulsan ports.
+This script produces the final ship classification visualization results for Busan, Gwangyang, and Ulsan ports.
+
+---
 
 ## Datasets
 
