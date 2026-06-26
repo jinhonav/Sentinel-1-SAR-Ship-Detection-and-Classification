@@ -153,7 +153,7 @@ The generated MAT files are directly compatible with the DeepLabV3 inference pip
 
 ## Code Structure
 
-### `Preparation_OpenSARShip2.ipynb`
+### Preparation_OpenSARShip2.ipynb
 
 This script prepares the OpenSARShip2.0 dataset for ship type classification.
 
@@ -173,7 +173,7 @@ This script is mainly used for dataset inspection and preprocessing before class
 
 ---
 
-### `Train_YOLO_LS_SSDD.ipynb`
+### Train_YOLO_LS_SSDD.ipynb
 
 This script trains the YOLOv8 ship detection model using the LS-SSDD dataset.
 
@@ -199,7 +199,7 @@ This script produces the final YOLOv8 ship detector used for Sentinel-1 SAR ship
 
 ---
 
-### `Train_Resnet_ship_class.ipynb`
+### Train_Resnet_ship_class.ipynb
 
 This script trains the ResNet-based ship type classification model using OpenSARShip2.0.
 
@@ -222,7 +222,7 @@ This script produces the ship type classifier used after YOLO-based ship detecti
 
 ---
 
-### `Visualization_YOLO.ipynb`
+### Visualization_YOLO.ipynb
 
 This script applies the trained YOLOv8 detector to Sentinel-1 SAR images and visualizes ship detection results.
 
@@ -241,7 +241,7 @@ This script is used to produce YOLO-only ship detection figures.
 
 ---
 
-### `Visualization_YOLO_Resnet.ipynb`
+### Visualization_YOLO_Resnet.ipynb
 
 This script combines YOLOv8 ship detection and ResNet ship type classification.
 
