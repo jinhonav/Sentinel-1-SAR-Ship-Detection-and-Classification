@@ -662,11 +662,25 @@ The Ulsan result shows ship detections distributed around the industrial port ar
 
 ## Ship Detection Result Summary
 
-```text
-Busan Port: 46 ships
-Gwangyang Port: 188 ships
-Ulsan Port: 79 ships
-```
+The trained YOLOv8 detector identified a total of **313 ships** across the three Sentinel-1 SAR test scenes. Ship type classification was subsequently performed using the trained ResNet18 classifier.
+
+### Detection Summary
+
+| Port | Total Detected Ships |
+|------|---------------------:|
+| Busan | 46 |
+| Gwangyang | 188 |
+| Ulsan | 79 |
+
+### Ship Type Classification Summary
+
+| Port | Cargo | Tanker | Other Type | Total |
+|------|------:|--------:|-----------:|------:|
+| Busan | 3 | 0 | 43 | 46 |
+| Gwangyang | 34 | 0 | 154 | 188 |
+| Ulsan | 30 | 2 | 47 | 79 |
+
+Overall, the YOLOv8 detector successfully identified **313 ships** across the three port areas. The subsequent ResNet18 classifier predicted **67 Cargo ships**, **2 Tanker ships**, and **244 Other Type ships**. Tanker predictions were observed only in the Ulsan Port scene, which is consistent with Ulsan's role as the largest liquid cargo handling port in South Korea.
 
 ---
 
