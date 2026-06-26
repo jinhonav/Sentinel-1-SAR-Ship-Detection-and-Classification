@@ -50,12 +50,10 @@ Sentinel1_SAR_Ship_Detection_Classification/
 │   ├── Model_Training_Workflow.png
 │   ├── Sentinel1_SAR_Preprocessing_Workflow.png
 │   ├── Ship_Detection_Classification_Result.png
-│   ├── Busan_Ship_Detection_Result.png
-│   ├── Gwangyang_Ship_Detection_Result.png
-│   ├── Ulsan_Ship_Detection_Result.png
-│   ├── Busan_Ship_Classification_Result.png
-│   ├── Gwangyang_Ship_Classification_Result.png
-│   └── Ulsan_Ship_Classification_Result.png
+│   ├── Original_SAR_Image.png
+│   ├── Busan_Ship_Detection_Classification_Result.png
+│   ├── Gwangyang_Ship_Detection_Classification_Result.png
+│   └── Ulsan_Ship_Detection_Classification_Result.png
 │
 ├── MATLAB/
 │   └── Mapping_Sentinel1.m
