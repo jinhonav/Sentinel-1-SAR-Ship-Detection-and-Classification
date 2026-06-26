@@ -505,7 +505,7 @@ Acquisition date: 2024-08-17
 Detected ships: 46
 ```
 
-The Busan result shows ship detections mainly distributed in coastal waters and port-adjacent areas. The ResNet classifier assigned most detected ships to the Other Type class, with a smaller number of Cargo predictions.
+The Busan result demonstrates that YOLO accurately detected nearly all ships within the port area. The detected ships were mainly distributed in coastal waters and port-adjacent areas. The ResNet classifier assigned most detected ships to the Other Type class, with a smaller number of Cargo predictions.
 
 ---
 
@@ -518,7 +518,7 @@ Acquisition date: 2025-05-01
 Detected ships: 188
 ```
 
-The Gwangyang result shows the highest number of detected ships among the three test areas. Many detections are concentrated around inner port channels and anchorage areas.
+The Gwangyang result shows the highest number of detected ships among the three test areas. Many detections are concentrated around inner port channels and anchorage areas. Despite the large number of ships present in the port, YOLO successfully detected the vast majority of them with high accuracy. The ResNet classifier identified a substantial number of Cargo ships, reflecting the characteristics of Gwangyang Port as one of Korea's major industrial and cargo ports.
 
 ---
 
@@ -531,7 +531,7 @@ Acquisition date: 2025-05-08
 Detected ships: 79
 ```
 
-The Ulsan result shows ship detections distributed around the industrial port area and offshore anchorage zones. Compared with Busan and Gwangyang, the Ulsan classification result includes Cargo, Tanker, and Other Type predictions.
+The Ulsan result shows ship detections distributed around the industrial port area and offshore anchorage zones. YOLO successfully detected the majority of ships in the scene; however, a small number of ships located in areas with strong SAR backscatter were not detected because the intense background scattering reduced the contrast between the ships and their surrounding environment. Unlike the Busan and Gwangyang results, the ResNet classifier identified several ships as Tanker, which is consistent with Ulsan's role as the largest liquid cargo handling port in South Korea and supports the plausibility of the classification results.
 
 ---
 
