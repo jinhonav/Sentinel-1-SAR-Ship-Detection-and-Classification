@@ -93,9 +93,7 @@ The overall workflow consists of two deep learning stages and one inference stag
 3. Application to Sentinel-1 SAR images over port areas.
 4. Geographic visualization of detected and classified ships.
 
-```markdown
 ![Model Training Workflow](figures/Model_Training_Workflow.png)
-```
 
 ---
 
