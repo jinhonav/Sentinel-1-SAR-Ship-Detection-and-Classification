@@ -139,6 +139,129 @@ Sigma0(dB) = 10 × log10(Sigma0)
 
 ---
 
+## MATLAB Utilities
+
+### Mapping_Sentinel1.m
+
+Maps preprocessed Sentinel-1 Sigma0 VV data onto a regular longitude-latitude grid and exports:
+
+- sigma_naught
+- xx (longitude)
+- yy (latitude)
+
+The generated MAT files are directly compatible with the DeepLabV3 inference pipeline.
+
+## Code Structure
+
+### `Preparation_OpenSARShip2.ipynb`
+
+This script prepares the OpenSARShip2.0 dataset for ship type classification.
+
+It performs the following steps:
+
+- Unzips the OpenSARShip2.0 dataset into the Colab local storage.
+- Searches available ship patch folders such as `Patch_Uint8`, `Patch_RGB`, `Patch_cal`, and `Patch`.
+- Extracts ship type labels from file names.
+- Maps the original ship type labels into three classes:
+  - `Cargo`
+  - `Tanker`
+  - `Other Type`
+- Checks the class distribution.
+- Prepares the image paths and labels for ResNet-based ship classification.
+
+This notebook is mainly used for dataset inspection and preprocessing before classifier training.
+
+---
+
+### `Train_YOLO_LS_SSDD.ipynb`
+
+This script trains the YOLOv8 ship detection model using the LS-SSDD dataset.
+
+It performs the following steps:
+
+- Copies the LS-SSDD dataset from Google Drive to the Colab local storage.
+- Reads the `train.txt`, `val.txt`, and `test.txt` split files.
+- Converts VOC-style XML annotations into YOLO format.
+- Creates the YOLO directory structure:
+  - `images/train`
+  - `images/val`
+  - `images/test`
+  - `labels/train`
+  - `labels/val`
+  - `labels/test`
+- Generates the `data.yaml` file for YOLO training.
+- Trains a YOLOv8s model for ship detection.
+- Validates the trained model on the LS-SSDD validation set.
+- Runs test prediction examples.
+- Saves the trained `best.pt` and `last.pt` model weights to Google Drive.
+
+This notebook produces the final YOLOv8 ship detector used for Sentinel-1 SAR ship detection.
+
+---
+
+### `Train_Resnet_ship_class.ipynb`
+
+This script trains the ResNet-based ship type classification model using OpenSARShip2.0.
+
+It performs the following steps:
+
+- Loads OpenSARShip2.0 ship chip images.
+- Extracts ship type labels from file names.
+- Selects three major ship classes:
+  - `Cargo`
+  - `Tanker`
+  - `Other Type`
+- Splits the dataset into training and validation sets.
+- Applies image resizing and data augmentation.
+- Trains a ResNet18 classifier using ImageNet-pretrained weights.
+- Evaluates the classifier on the validation set.
+- Reports classification metrics such as precision, recall, F1-score, and accuracy.
+- Saves the trained ResNet model checkpoint.
+
+This notebook produces the ship type classifier used after YOLO-based ship detection.
+
+---
+
+### `Visualization_YOLO.ipynb`
+
+This script applies the trained YOLOv8 detector to Sentinel-1 SAR images and visualizes ship detection results.
+
+It performs the following steps:
+
+- Loads preprocessed Sentinel-1 Sigma0 VV images.
+- Loads longitude and latitude grids.
+- Converts the SAR image into a YOLO-compatible input image.
+- Performs sliding-window YOLO inference over large Sentinel-1 scenes.
+- Merges detected bounding boxes using post-processing.
+- Converts pixel-based bounding boxes into geographic coordinates.
+- Overlays detected ship boxes on Sentinel-1 SAR images.
+- Generates georeferenced ship detection maps.
+
+This notebook is used to produce YOLO-only ship detection figures.
+
+---
+
+### `Visualization_YOLO_Resnet.ipynb`
+
+This script combines YOLOv8 ship detection and ResNet ship type classification.
+
+It performs the following steps:
+
+- Loads the trained YOLOv8 ship detector.
+- Loads the trained ResNet ship type classifier.
+- Applies YOLOv8 to Sentinel-1 SAR images.
+- Crops detected ship regions from the original SAR image.
+- Resizes each crop for ResNet input.
+- Predicts the ship type for each detected ship.
+- Converts bounding boxes to longitude-latitude coordinates.
+- Visualizes classification results using different box colors for each ship type:
+  - `Cargo`
+  - `Tanker`
+  - `Other Type`
+- Generates final georeferenced ship detection and classification maps.
+
+This notebook produces the final ship classification visualization results for Busan, Gwangyang, and Ulsan ports.
+
 ## Datasets
 
 This project uses two public SAR ship datasets.
