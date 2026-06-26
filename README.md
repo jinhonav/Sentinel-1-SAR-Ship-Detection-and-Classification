@@ -672,21 +672,52 @@ Ulsan Port: 79 ships
 
 ## Model Performance
 
+### YOLOv8 Ship Detection Performance
+
+The YOLOv8s ship detector was trained on the LS-SSDD dataset for 20 epochs and evaluated on both the validation and test sets.
+
+| Dataset    | Precision |    Recall |    mAP@50 | mAP@50:95 |
+| ---------- | --------: | --------: | --------: | --------: |
+| Validation |     0.637 |     0.352 |     0.376 |     0.130 |
+| Test       | **0.807** | **0.616** | **0.690** | **0.257** |
+
+The evaluation results indicate that the YOLOv8 detector achieved a precision of **80.7%** and an mAP@50 of **69.0%** on the LS-SSDD test set, demonstrating reliable ship detection performance on Sentinel-1 SAR imagery. Although the recall was relatively lower than the precision, the detector successfully identified the majority of ship targets while maintaining a low false-positive rate.
+
+---
+
 ### ResNet18 Ship Classification Performance
 
-The ResNet18 classifier was evaluated on the OpenSARShip2.0 validation set.
+The ResNet18 classifier was trained on the OpenSARShip2.0 dataset using three ship categories (**Cargo**, **Tanker**, and **Other Type**) and evaluated on the validation set.
 
-Example validation result:
+**Overall Accuracy**
 
-```text
-Accuracy: approximately 0.70
-```
+* Validation Accuracy: **69.6%**
 
-Class-level performance showed that Cargo was classified more reliably than Tanker and Other Type. Tanker and Other Type remained more difficult to separate, likely due to similar SAR backscatter patterns, limited visual structure in ship chips, and domain differences between OpenSARShip2.0 chips and YOLO-cropped Sentinel-1 ship targets.
+**Classification Report**
+
+| Class      | Precision |   Recall | F1-score | Support |
+| ---------- | --------: | -------: | -------: | ------: |
+| Cargo      |  **0.75** | **0.85** | **0.80** |    2233 |
+| Tanker     |      0.56 |     0.45 |     0.50 |     805 |
+| Other Type |      0.57 |     0.47 |     0.51 |     615 |
+
+| Metric             |     Value |
+| ------------------ | --------: |
+| Overall Accuracy   | **0.696** |
+| Macro Precision    |      0.63 |
+| Macro Recall       |      0.59 |
+| Macro F1-score     |      0.60 |
+| Weighted Precision |      0.68 |
+| Weighted Recall    |      0.70 |
+| Weighted F1-score  |      0.68 |
+
+The classifier achieved an overall validation accuracy of **69.6%**. Among the three ship categories, **Cargo** exhibited the highest classification performance with an F1-score of **0.80**, while **Tanker** and **Other Type** showed relatively lower performance. This is likely due to the similar SAR backscatter characteristics shared by different ship types, limited structural information contained in individual ship chips, and the domain gap between OpenSARShip2.0 image patches and YOLO-cropped Sentinel-1 ship targets.
+
+---
 
 ### Important Note
 
-The ship type classification results should be interpreted as experimental outputs. The classification maps were not independently validated using AIS data in this project. Therefore, the ship detection results are more reliable than the ship type classification results.
+The ship type classification results should be interpreted as experimental outputs. The classification maps were not independently validated using AIS data in this project. Therefore, the ship detection results are considered more reliable than the ship type classification results. Future work will include AIS-based validation and domain adaptation to improve ship type classification performance on real Sentinel-1 SAR imagery.
 
 ---
 
