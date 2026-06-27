@@ -609,6 +609,8 @@ The final output includes three types of figures for each port:
 2. YOLOv8 ship detection result
 3. ResNet ship classification result
 
+![Ship Detection and Classification Result](figures/Ship_Detection_Classification_Result.png)
+
 ---
 
 ## Port-Level Results
